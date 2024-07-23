@@ -1,14 +1,23 @@
-# Welcome to your CDK TypeScript project
+# Amazon API Gateway Custom Domain Versioning
 
-This is a blank project for CDK development with TypeScript.
+This is a sample repository on how to scalably implement versioning within Amazon API Gateway. This approach uses the Amazon API (Gateway Custom Domain)[https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html] feature to implement path based routing to versioned API's. 
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+![Architecture Diagram](./images/api-gateway-custom-domain-versioning.png)
 
-## Useful commands
+## Table of Contents
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+[[_TOC_]]
+
+## Design Considerations
+
+TODO
+
+## How to use this Sample Repo
+
+TODO
+
+### Prerequisites
+
+TODO
+
+Use of the Custom Domain feature that Amazon API Gateway provides requires ownership of a domain. In order to utilize this pattern or deploy this sample application, you must own a domain.
