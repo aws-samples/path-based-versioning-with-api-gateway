@@ -15,6 +15,7 @@ import {
   LayerVersion,
 } from "aws-cdk-lib/aws-lambda";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
+import { NagSuppressions } from "cdk-nag";
 import { Construct } from "constructs";
 
 export interface NodejsFunctionWithRoleProps {
@@ -40,35 +41,35 @@ export class NodejsFunctionWithRole extends Construct {
       assumedBy: new ServicePrincipal("lambda.amazonaws.com"),
     });
 
+    var managedLoggingPolicy = new ManagedPolicy(this, "FunctionBasePolicy", {
+      statements: [
+        new PolicyStatement({
+          sid: "AllowCloudWatchLogs",
+          effect: Effect.ALLOW,
+          actions: [
+            "logs:CreateLogGroup",
+            "logs:CreateLogStream",
+            "logs:PutLogEvents",
+          ],
+          resources: ["*"],
+        }),
+        new PolicyStatement({
+          sid: "AllowXRayAccess",
+          effect: Effect.ALLOW,
+          actions: [
+            "xray:PutTraceSegments",
+            "xray:PutTelemetryRecords",
+            "xray:GetSamplingRules",
+            "xray:GetSamplingTargets",
+            "xray:GetSamplingStatisticSummaries",
+          ],
+          resources: ["*"],
+        }),
+      ],
+    });
+
     // Add Cloudwatch Logging Permissions
-    this.role.addManagedPolicy(
-      new ManagedPolicy(this, "FunctionBasePolicy", {
-        statements: [
-          new PolicyStatement({
-            sid: "AllowCloudWatchLogs",
-            effect: Effect.ALLOW,
-            resources: ["*"],
-            actions: [
-              "logs:CreateLogGroup",
-              "logs:CreateLogStream",
-              "logs:PutLogEvents",
-            ],
-          }),
-          new PolicyStatement({
-            sid: "AllowXRayAccess",
-            effect: Effect.ALLOW,
-            actions: [
-              "xray:PutTraceSegments",
-              "xray:PutTelemetryRecords",
-              "xray:GetSamplingRules",
-              "xray:GetSamplingTargets",
-              "xray:GetSamplingStatisticSummaries",
-            ],
-            resources: ["*"],
-          }),
-        ],
-      })
-    );
+    this.role.addManagedPolicy(managedLoggingPolicy);
 
     this.function = new NodejsFunction(this, "Function", {
       entry: props.entry,
@@ -103,5 +104,17 @@ export class NodejsFunctionWithRole extends Construct {
         ],
       },
     });
+
+    NagSuppressions.addResourceSuppressions(
+      this,
+      [
+        {
+          id: "AwsSolutions-IAM5",
+          reason:
+            "The Lambda Execution Role Policy needs to include a * permissions to enable Cloudwatch Logging and X-Ray Tracing.",
+        },
+      ],
+      true
+    );
   }
 }

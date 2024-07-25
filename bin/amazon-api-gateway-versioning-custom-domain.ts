@@ -18,4 +18,4 @@ new ApiStackV2(app, "ApiStackV2", {
   customDomainName: customDomainRouterStack.apiGatewayCustomDomainName,
 });
 
-// Aspects.of(app).add(new AwsSolutionsChecks());
+Aspects.of(app).add(new AwsSolutionsChecks());
