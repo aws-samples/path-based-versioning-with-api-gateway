@@ -64,6 +64,52 @@ We recommend using the open-source API testing tool known as (Bruno)[https://www
 9. Invoke your API using the '->' button for the selected request.
 10. Take note on how Validation (passing in non-number values) is handled in V1 compared to V2.
 
+#### Important Security Considerings Regarding the Sample Implementation
+
+The sample CDK application uses CDK nag with AWSSolutionsChecks to help improve security. However, some CDK issues are suppressed in order to keep the sample proof-of-concept application simple to use. _These suppressions should be remediated before use in a production-ready implementation._
+
+These suppressions include:
+
+```typescript
+NagSuppressions.addResourceSuppressions(
+  this,
+  [
+    {
+      id: "AwsSolutions-IAM5",
+      reason:
+        "The Lambda Execution Role Policy needs to include a * permissions to enable Cloudwatch Logging and X-Ray Tracing.",
+    },
+  ],
+  true
+);
+
+NagSuppressions.addResourceSuppressions(
+  this.lambdaRestApi,
+  [
+    {
+      id: "AwsSolutions-APIG2",
+      reason: "Request Validation is handled by the Backend Lambda function.",
+    },
+    {
+      id: "AwsSolutions-APIG3",
+      reason:
+        "This API does not implement a WAF Firewall integration as it is used for demo sample implementation purposes only. Adding a firewall would add complexity to the sample proof of concept exercise. Consider adding an AWS WAF Firewall integration before using Amazon API Gateway in a production use-case.",
+    },
+    {
+      id: "AwsSolutions-APIG4",
+      reason:
+        "This API does not implement authorization as it is used for demo sample implementation purposes only. Adding authorization would add complexity to the sample proof of concept exercise. Ensure authorization is implemented before using Amazon API Gateway in a production use-case.",
+    },
+    {
+      id: "AwsSolutions-COG4",
+      reason:
+        "This API does not implement authorization as it is used for demo sample implementation purposes only. Adding authorization would add complexity to the sample proof of concept exercise. Ensure authorization is implemented before using Amazon API Gateway in a production use-case.",
+    },
+  ],
+  true
+);
+```
+
 ## Contributing
 
 See details in [CONTRIBUTING.md](./CONTRIBUTING.md)
