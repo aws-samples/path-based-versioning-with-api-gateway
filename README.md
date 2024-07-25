@@ -71,6 +71,7 @@ The sample CDK application uses CDK nag with AWSSolutionsChecks to help improve 
 These suppressions include:
 
 ```typescript
+// lib/constructs/nodejsFunctionWithRole.ts
 NagSuppressions.addResourceSuppressions(
   this,
   [
@@ -83,6 +84,7 @@ NagSuppressions.addResourceSuppressions(
   true
 );
 
+// lib/apiStackV1.ts and lib/apiStackV2.ts
 NagSuppressions.addResourceSuppressions(
   this.lambdaRestApi,
   [
