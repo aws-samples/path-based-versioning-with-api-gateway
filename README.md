@@ -64,7 +64,14 @@ We recommend using the open-source API testing tool known as (Bruno)[https://www
 9. Invoke your API using the '->' button for the selected request.
 10. Take note on how Validation (passing in non-number values) is handled in V1 compared to V2.
 
+Example API Invocation with Bruno:
 ![Example API Invocation with Bruno](./images/api-testing-with-bruno.png)
+
+V1 (lack of) Validation Example:
+![V1 (lack of) Validation Example](./images/v1-validation.png)
+
+V2 (implemented) Validation Example:
+![V2 (implemented) Validation Example](./images/v2-validation.png)
 
 #### Important Security Considerings Regarding the Sample Implementation
 
