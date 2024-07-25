@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Sample-API-Gateway-Custom-Domain-Versioning",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

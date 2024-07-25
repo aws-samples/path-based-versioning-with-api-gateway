@@ -1,0 +1,18 @@
+meta {
+  name: AddNumbersV2
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://demo.api-gateway-custom-domain-versioning.{{DOMAIN_NAME}}/api/v2/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "num1": 1,
+    "num2": 3
+  }
+}

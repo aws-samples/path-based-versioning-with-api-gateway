@@ -56,7 +56,10 @@ class Lambda implements LambdaInterface {
 
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: event.error.message }),
+        body: JSON.stringify({
+          error: `Bad Request`,
+          details: event.error.message,
+        }),
       };
     }
   }
