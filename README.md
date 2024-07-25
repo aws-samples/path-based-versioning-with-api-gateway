@@ -66,8 +66,8 @@ We recommend using the open-source API testing tool known as (Bruno)[https://www
 
 ## Contributing
 
-See details in ![CONTRIBUTING.md](./CONTRIBUTING.md)
+See details in [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## License
 
-See details in ![LICENSE](./LICENSE)
+See details in [LICENSE](./LICENSE)
