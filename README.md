@@ -64,6 +64,8 @@ We recommend using the open-source API testing tool known as (Bruno)[https://www
 9. Invoke your API using the '->' button for the selected request.
 10. Take note on how Validation (passing in non-number values) is handled in V1 compared to V2.
 
+![Example API Invocation with Bruno](./images/api-testing-with-bruno.png)
+
 #### Important Security Considerings Regarding the Sample Implementation
 
 The sample CDK application uses CDK nag with AWSSolutionsChecks to help improve security. However, some CDK issues are suppressed in order to keep the sample proof-of-concept application simple to use. _These suppressions should be remediated before use in a production-ready implementation._
