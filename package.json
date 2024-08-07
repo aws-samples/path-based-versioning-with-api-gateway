@@ -9,7 +9,7 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "deploy-routing": "npx cdk deploy CustomDomainRouterStack --parameters PrerequisiteDomainName=coreyschnedl.com",
+    "deploy-routing": "npx cdk deploy CustomDomainRouterStack --parameters PrerequisiteDomainName=<<REPLACE_ME_WITH_YOU_DOMAIN_NAME>>",
     "deploy-v1": "npx cdk -a \"npx ts-node --prefer-ts-exts bin/amazon-api-gateway-versioning-custom-domain.ts\" deploy ApiStackV1",
     "deploy-v2": "npx cdk -a \"npx ts-node --prefer-ts-exts bin/amazon-api-gateway-versioning-custom-domain.ts\" deploy ApiStackV2"
   },
