@@ -6,7 +6,16 @@ This is a sample repository on how to scalably implement versioning within Amazo
 
 ## Table of Contents
 
-[[_TOC_]]
+- [Important Design Considerations](#important-design-considerations)
+- [How to use this Sample Repo](#how-to-use-this-sample-repo)
+  - [Prerequisites](#prerequisites)
+  - [Deploying the Sample Application](#deploying-the-sample-application)
+    - [About the Sample Application](#about-the-sample-application)
+    - [Step-by-Step Instructions](#step-by-step-instructions)
+    - [Testing your Sample API](#testing-your-sample-api)
+    - [Important Security Considerings Regarding the Sample Implementation](#important-security-considerings-regarding-the-sample-implementation)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Important Design Considerations
 
