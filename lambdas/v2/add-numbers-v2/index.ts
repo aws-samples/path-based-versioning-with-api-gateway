@@ -1,11 +1,11 @@
 import { Logger } from "@aws-lambda-powertools/logger";
 import { parser } from "@aws-lambda-powertools/parser";
+import { ApiGatewayEnvelope } from "@aws-lambda-powertools/parser/lib/cjs/envelopes";
+import { ParsedResult } from "@aws-lambda-powertools/parser/lib/cjs/types";
 import { Tracer } from "@aws-lambda-powertools/tracer";
 import type { LambdaInterface } from "@aws-lambda-powertools/commons/types";
 import { APIGatewayProxyResult, Context } from "aws-lambda";
 import { z } from "zod";
-import { ApiGatewayEnvelope } from "@aws-lambda-powertools/parser/envelopes";
-import { ParsedResult } from "@aws-lambda-powertools/parser/types";
 
 const logger = new Logger();
 const tracer = new Tracer();
